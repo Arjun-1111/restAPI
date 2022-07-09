@@ -1,13 +1,10 @@
 /* eslint-disable import/no-duplicates */
-import { Request, Response } from 'express';
+
 import express from 'express';
+import { createUserHandler } from '../src/controller/user.controller';
 
 const router = express.Router();
 
-router.route('/hello').get((req: Request, res: Response) => {
-  res.status(200).json({
-    data: 'success',
-  });
-});
+router.post('/api/users', createUserHandler);
 
 export default router;
