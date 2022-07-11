@@ -39,6 +39,7 @@
     "@types/hpp": "^0.2.2",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/lodash": "^4.14.182",
+    "@types/morgan": "^1.9.3",
     "@types/nanoid": "^3.0.0",
     "@types/node": "^18.0.3",
     "@types/pino": "^7.0.5",

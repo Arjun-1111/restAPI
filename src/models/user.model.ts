@@ -48,11 +48,8 @@ userSchema.pre<userDocument>('save', async function (next) {
 
   // creating the salt and hashing the password , and then setting the hashed password to user.password that will be saved to database
   const salt = await bcrypt.genSalt(config.get<number>('salt_work_factor'));
-
   const hash = await bcrypt.hash(user.password, salt);
-
   user.password = hash;
-
   return next();
 });
 
@@ -66,6 +63,6 @@ userSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, user.password).catch((e) => false);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model<userDocument>('User', userSchema);
 
 export default User;
