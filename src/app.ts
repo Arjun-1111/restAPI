@@ -7,6 +7,7 @@ import xssClean from 'xss-clean';
 import hpp from 'hpp';
 import mongoSanitize from 'express-mongo-sanitize';
 import morgan from 'morgan';
+import helmet from 'helmet';
 import connectdb from './utils/connect';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
 import limiter from '../rateLimiter';
@@ -35,6 +36,8 @@ app.use(xssClean());
 app.use(limiter);
 // Express middleware to protect against HTTP Parameter Pollution attacks
 app.use(hpp());
+// Helmet.js is a Node.js module that helps in securing HTTP headers
+app.use(helmet());
 
 // middle for deserialize user
 app.use(deserializeUser);
