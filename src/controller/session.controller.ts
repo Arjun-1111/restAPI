@@ -10,6 +10,7 @@ import {
 import config from 'config';
 import { validatePassword } from '../service/user.service';
 import { signJwt } from '../utils/jwt_utils';
+import { deleteProduct } from '../service/product.service';
 
 // eslint-disable-next-line import/prefer-default-export
 export const createUserSessionHandler = async (req: Request, res: Response) => {
@@ -72,7 +73,7 @@ export const deleteSessionHandler = async (req: Request, res: Response) => {
   // res.locals.user.session -< .session is present because while setting the jwt we set the sessionid so while decoding we can get the same session value
   const sessionId = res.locals.user.session;
 
-  await updateSession({ _id: sessionId }, { valid: false });
+  await deleteProduct({ _id: sessionId });
 
   return res.status(200).json({
     accessToken: null,

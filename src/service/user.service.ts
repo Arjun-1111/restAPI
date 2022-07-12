@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable arrow-body-style */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-unresolved */
@@ -8,8 +9,7 @@ import User, { userDocument } from '../models/user.model';
 
 export const createUser = async (
   input: DocumentDefinition<
-    Omit<userDocument>,
-    'createdAt' | 'updatedAt' | 'comparePassword'
+    Omit<userDocument, 'createdAt' | 'updatedAt' | 'comparePassword'>
   >
 ) => {
   try {

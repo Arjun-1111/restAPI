@@ -20,7 +20,7 @@ export const createUserHandler = async (
     // if user is created
     if (user) {
       return res.status(200).json({
-        status: 'fail',
+        status: 'success',
         message: user,
       });
     }
